@@ -1,0 +1,27 @@
+{
+  "name": "Ofera - أوفيرا",
+  "short_name": "Ofera",
+  "description": "العروض الذكية بين إيديك - Smart offers at your fingertips",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#e8fff2",
+  "theme_color": "#00b86b",
+  "orientation": "portrait",
+  "lang": "ar",
+  "dir": "rtl",
+  "categories": ["shopping", "business"],
+  "icons": [
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
