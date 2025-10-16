@@ -46,14 +46,14 @@ const translations = {
     haveAccount: "لديك حساب بالفعل؟ سجل دخول",
     
     // Home Page
-    offers: "🛍️ العروض",
-    businessLogin: "🏪 الدخول كبائع",
-    logout: "🚪 تسجيل الخروج",
+    offers: "العروض",
+    businessLogin: "الدخول كبائع",
+    logout: "تسجيل الخروج",
     
     // Business Options
     businessOptions: "خيارات البائع",
-    businessLoginBtn: "🔐 دخول البائع",
-    businessRegisterBtn: "📝 تسجيل بائع جديد",
+    businessLoginBtn: "دخول البائع",
+    businessRegisterBtn: "تسجيل بائع جديد",
     
     // Business Login
     businessLoginTitle: "دخول البائع",
@@ -66,6 +66,7 @@ const translations = {
     // Offers Page
     currentOffers: "العروض الحالية",
     searchPlaceholder: "ابحث في العروض...",
+    search: "بحث",
     allCategories: "جميع التصنيفات",
     restaurants: "مطاعم",
     cafes: "كافيهات",
@@ -84,17 +85,24 @@ const translations = {
     category: "التصنيف",
     originalPrice: "السعر الأصلي",
     discountedPrice: "السعر بعد الخصم",
+    discountPercentage: "نسبة الخصم",
     offerDuration: "مدة العرض",
-    days: "يوم",
+    days: "أيام",
+    weeks: "أسابيع", 
+    months: "شهور",
+    status: "الحالة",
+    pending: "قيد الانتظار",
     
     // Order Form
     orderTitle: "طلب العرض",
     yourName: "اسمك الكامل",
     yourPhone: "رقم هاتفك",
     yourEmail: "بريدك الإلكتروني",
-    additionalNotes: "ملاحظات إضافية (اختياري)",
+    yourAddress: "عنوانك",
+    additionalNotes: "ملاحظات إضافية",
     addToCart: "إضافة إلى السلة",
     orderNow: "طلب مباشر",
+    contactBusiness: "الاتصال بالبائع",
     
     // Add Offer Page
     addOfferTitle: "إضافة عرض جديد",
@@ -102,11 +110,14 @@ const translations = {
     offerDescription: "وصف العرض",
     offerPrice: "السعر الأصلي",
     discountPrice: "السعر بعد الخصم",
+    discountPercentage: "نسبة الخصم",
     offerCategory: "تصنيف العرض",
     selectCategory: "اختر التصنيف",
     offerDays: "مدة العرض",
-    offerImage: "صورة العرض (اختياري)",
+    durationType: "نوع المدة",
+    offerImage: "صورة العرض الرئيسية",
     submitOffer: "إرسال العرض للموافقة",
+    imageNote: "سيتم عرض هذه الصورة بجوار العرض",
     
     // Cart Page
     cartTitle: "سلة التسوق",
@@ -117,17 +128,6 @@ const translations = {
     completeOrder: "إتمام الطلب",
     remove: "حذف",
     egp: "جنيه",
-    
-    // Admin Panel
-    adminPanel: "لوحة التحكم",
-    pendingOffers: "العروض المعلقة",
-    approvedOffers: "العروض المقبولة",
-    rejectedOffers: "العروض المرفوضة",
-    approve: "قبول",
-    reject: "رفض",
-    pending: "قيد الانتظار",
-    approved: "مقبول",
-    rejected: "مرفوض",
     
     // Buttons & Navigation
     back: "عودة",
@@ -146,8 +146,7 @@ const translations = {
     businessRegistered: "تم تسجيل حساب البائع بنجاح! سيتم مراجعة طلبك قريباً.",
     pleaseLogin: "يرجى تسجيل الدخول أولاً",
     emptyCartMsg: "السلة فارغة",
-    offerApproved: "تم قبول العرض بنجاح",
-    offerRejected: "تم رفض العرض بنجاح",
+    contactBusinessMsg: "سيتم توجيهك للاتصال بالبائع",
     
     // Error Messages
     errorLoadingData: "حدث خطأ في تحميل البيانات",
@@ -178,14 +177,14 @@ const translations = {
     haveAccount: "Already have an account? Login",
     
     // Home Page
-    offers: "🛍️ Offers",
-    businessLogin: "🏪 Business Login",
-    logout: "🚪 Logout",
+    offers: "Offers",
+    businessLogin: "Business Login",
+    logout: "Logout",
     
     // Business Options
     businessOptions: "Business Options",
-    businessLoginBtn: "🔐 Business Login",
-    businessRegisterBtn: "📝 Register Business",
+    businessLoginBtn: "Business Login",
+    businessRegisterBtn: "Register Business",
     
     // Business Login
     businessLoginTitle: "Business Login",
@@ -198,6 +197,7 @@ const translations = {
     // Offers Page
     currentOffers: "Current Offers",
     searchPlaceholder: "Search offers...",
+    search: "Search",
     allCategories: "All Categories",
     restaurants: "Restaurants",
     cafes: "Cafes",
@@ -216,17 +216,24 @@ const translations = {
     category: "Category",
     originalPrice: "Original Price",
     discountedPrice: "Discounted Price",
+    discountPercentage: "Discount Percentage",
     offerDuration: "Offer Duration",
     days: "days",
+    weeks: "weeks",
+    months: "months",
+    status: "Status",
+    pending: "Pending",
     
     // Order Form
     orderTitle: "Place Order",
     yourName: "Your Full Name",
     yourPhone: "Your Phone Number",
     yourEmail: "Your Email",
-    additionalNotes: "Additional Notes (optional)",
+    yourAddress: "Your Address",
+    additionalNotes: "Additional Notes",
     addToCart: "Add to Cart",
     orderNow: "Order Now",
+    contactBusiness: "Contact Business",
     
     // Add Offer Page
     addOfferTitle: "Add New Offer",
@@ -234,11 +241,14 @@ const translations = {
     offerDescription: "Offer Description",
     offerPrice: "Original Price",
     discountPrice: "Discounted Price",
+    discountPercentage: "Discount Percentage",
     offerCategory: "Offer Category",
     selectCategory: "Select Category",
-    offerDays: "Offer Duration (days)",
-    offerImage: "Offer Image (optional)",
+    offerDays: "Offer Duration",
+    durationType: "Duration Type",
+    offerImage: "Main Offer Image",
     submitOffer: "Submit Offer for Approval",
+    imageNote: "This image will be displayed next to the offer",
     
     // Cart Page
     cartTitle: "Shopping Cart",
@@ -249,17 +259,6 @@ const translations = {
     completeOrder: "Complete Order",
     remove: "Remove",
     egp: "EGP",
-    
-    // Admin Panel
-    adminPanel: "Admin Panel",
-    pendingOffers: "Pending Offers",
-    approvedOffers: "Approved Offers",
-    rejectedOffers: "Rejected Offers",
-    approve: "Approve",
-    reject: "Reject",
-    pending: "Pending",
-    approved: "Approved",
-    rejected: "Rejected",
     
     // Buttons & Navigation
     back: "Back",
@@ -278,8 +277,7 @@ const translations = {
     businessRegistered: "Business account registered successfully! Your request will be reviewed soon.",
     pleaseLogin: "Please login first",
     emptyCartMsg: "Cart is empty",
-    offerApproved: "Offer approved successfully",
-    offerRejected: "Offer rejected successfully",
+    contactBusinessMsg: "You will be redirected to contact the business",
     
     // Error Messages
     errorLoadingData: "Error loading data",
@@ -297,7 +295,6 @@ auth.onAuthStateChanged((user) => {
   
   if (user) {
     showHomePage();
-    checkAdminStatus(user.uid);
   } else {
     showAuthRequired();
   }
@@ -317,8 +314,6 @@ function navigateTo(pageId) {
       setTimeout(loadOffers, 100);
     } else if (pageId === 'cart') {
       loadCart();
-    } else if (pageId === 'admin') {
-      loadAdminPanel();
     }
   }
 }
@@ -334,8 +329,7 @@ function goBack() {
     'offers': 'home',
     'offer-details': 'offers',
     'add-offer': 'business-options',
-    'cart': 'offers',
-    'admin': 'home'
+    'cart': 'offers'
   };
   
   if (backMap[currentPage]) {
@@ -521,14 +515,17 @@ function setLanguage(lang) {
   currentLang = lang;
   localStorage.setItem('lang', lang);
   
+  // Update HTML attributes
   document.documentElement.setAttribute('lang', lang);
   document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
   
+  // Update language switch text
   const langText = document.getElementById('lang-text');
   if (langText) {
     langText.textContent = lang === 'ar' ? 'EN' : 'AR';
   }
   
+  // Update ALL UI elements
   updateEntireUI();
 }
 
@@ -538,8 +535,9 @@ function updateEntireUI() {
   updateBusinessPages();
   updateOffersPage();
   updateCartPage();
-  updateAdminPanel();
   updateAddOfferPage();
+  updateOfferDetails();
+  updateCartItems();
 }
 
 function updateAuthPages() {
@@ -643,10 +641,12 @@ function updateBusinessPages() {
 function updateOffersPage() {
   const offersTitle = document.querySelector('#offers .page-title');
   const searchInput = document.getElementById('searchInput');
+  const searchBtn = document.querySelector('.search-btn');
   const categoryFilter = document.getElementById('categoryFilter');
   
   if (offersTitle) offersTitle.textContent = t('currentOffers');
   if (searchInput) searchInput.placeholder = t('searchPlaceholder');
+  if (searchBtn) searchBtn.textContent = t('search');
   if (categoryFilter) {
     const options = categoryFilter.options;
     if (options[0]) options[0].textContent = t('allCategories');
@@ -677,27 +677,18 @@ function updateCartPage() {
   if (checkoutBtn) checkoutBtn.textContent = t('completeOrder');
 }
 
-function updateAdminPanel() {
-  const adminTitle = document.querySelector('#admin .page-title');
-  const pendingTab = document.querySelector('.tab-btn:nth-child(1)');
-  const approvedTab = document.querySelector('.tab-btn:nth-child(2)');
-  const rejectedTab = document.querySelector('.tab-btn:nth-child(3)');
-  
-  if (adminTitle) adminTitle.textContent = t('adminPanel');
-  if (pendingTab) pendingTab.textContent = t('pendingOffers');
-  if (approvedTab) approvedTab.textContent = t('approvedOffers');
-  if (rejectedTab) rejectedTab.textContent = t('rejectedOffers');
-}
-
 function updateAddOfferPage() {
   const addOfferTitle = document.querySelector('#add-offer .page-title');
   const offerTitleInput = document.getElementById('offerTitle');
   const offerDescInput = document.getElementById('offerDesc');
   const originalPriceInput = document.getElementById('originalPrice');
   const discountedPriceInput = document.getElementById('discountedPrice');
+  const discountPercentageInput = document.getElementById('discountPercentage');
   const offerCategorySelect = document.getElementById('offerCategory');
   const offerDurationInput = document.getElementById('offerDuration');
+  const durationTypeSelect = document.getElementById('durationType');
   const submitButton = document.querySelector('#add-offer .main-btn');
+  const imageNote = document.querySelector('.image-note');
   
   const labels = document.querySelectorAll('#add-offer .add-offer-form label');
   
@@ -706,8 +697,10 @@ function updateAddOfferPage() {
   if (offerDescInput) offerDescInput.placeholder = t('offerDescription');
   if (originalPriceInput) originalPriceInput.placeholder = t('offerPrice');
   if (discountedPriceInput) discountedPriceInput.placeholder = t('discountPrice');
+  if (discountPercentageInput) discountPercentageInput.placeholder = t('discountPercentage');
   if (offerDurationInput) offerDurationInput.placeholder = t('offerDays');
   if (submitButton) submitButton.textContent = t('submitOffer');
+  if (imageNote) imageNote.textContent = t('imageNote');
   
   if (offerCategorySelect) {
     const options = offerCategorySelect.options;
@@ -722,16 +715,73 @@ function updateAddOfferPage() {
     if (options[8]) options[8].textContent = t('other');
   }
   
+  if (durationTypeSelect) {
+    const options = durationTypeSelect.options;
+    if (options[0]) options[0].textContent = t('days');
+    if (options[1]) options[1].textContent = t('weeks');
+    if (options[2]) options[2].textContent = t('months');
+  }
+  
+  // Update labels
   labels.forEach((label, index) => {
     const text = label.textContent.trim();
     if (text === 'اسم العرض' || text === 'Offer Name') label.textContent = t('offerName');
     else if (text === 'وصف العرض' || text === 'Offer Description') label.textContent = t('offerDescription');
     else if (text === 'السعر الأصلي' || text === 'Original Price') label.textContent = t('offerPrice');
     else if (text === 'السعر بعد الخصم' || text === 'Discounted Price') label.textContent = t('discountPrice');
+    else if (text === 'نسبة الخصم (اختياري)' || text === 'Discount Percentage (optional)') label.textContent = t('discountPercentage');
     else if (text === 'تصنيف العرض' || text === 'Offer Category') label.textContent = t('offerCategory');
-    else if (text === 'مدة العرض' || text === 'Offer Duration') label.textContent = t('offerDuration');
-    else if (text === 'صورة العرض (اختياري)' || text === 'Offer Image (optional)') label.textContent = t('offerImage');
+    else if (text === 'مدة العرض' || text === 'Offer Duration') label.textContent = t('offerDays');
+    else if (text === 'نوع المدة' || text === 'Duration Type') label.textContent = t('durationType');
+    else if (text === 'صورة العرض الرئيسية (اختياري)' || text === 'Main Offer Image (optional)') label.textContent = t('offerImage');
   });
+}
+
+function updateOfferDetails() {
+  if (document.querySelector('#offer-details.page.active')) {
+    const orderTitle = document.querySelector('#orderForm h3');
+    const customerName = document.getElementById('customerName');
+    const customerPhone = document.getElementById('customerPhone');
+    const customerEmail = document.getElementById('customerEmail');
+    const customerAddress = document.getElementById('customerAddress');
+    const customerNotes = document.getElementById('customerNotes');
+    const addToCartBtn = document.querySelector('#orderForm .main-btn.secondary');
+    const orderNowBtn = document.querySelector('#orderForm .main-btn');
+    const contactBusinessBtn = document.querySelector('#orderForm .main-btn.outline');
+    
+    if (orderTitle) orderTitle.textContent = t('orderTitle');
+    if (customerName) customerName.placeholder = t('yourName');
+    if (customerPhone) customerPhone.placeholder = t('yourPhone');
+    if (customerEmail) customerEmail.placeholder = t('yourEmail');
+    if (customerAddress) customerAddress.placeholder = t('yourAddress');
+    if (customerNotes) customerNotes.placeholder = t('additionalNotes');
+    if (addToCartBtn) addToCartBtn.textContent = t('addToCart');
+    if (orderNowBtn) orderNowBtn.textContent = t('orderNow');
+    if (contactBusinessBtn) contactBusinessBtn.textContent = t('contactBusiness');
+  }
+}
+
+function updateCartItems() {
+  if (document.querySelector('#cart.page.active')) {
+    const removeButtons = document.querySelectorAll('.cart-item-actions .main-btn.outline');
+    removeButtons.forEach(btn => {
+      btn.textContent = t('remove');
+    });
+  }
+}
+
+// Search Function
+function searchOffers() {
+  loadOffers();
+}
+
+// Contact Business Function
+function contactBusiness() {
+  if (!currentOffer) return;
+  
+  alert(t('contactBusinessMsg'));
+  // Here you can implement actual contact logic
+  // For example: window.open(`tel:${currentOffer.businessPhone}`) or other contact methods
 }
 
 // Offers Management
@@ -747,7 +797,6 @@ function loadOffers() {
   const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
   const selectedCategory = categoryFilter ? categoryFilter.value : 'all';
   
-  // Check both approved_offers and pending_offers for testing
   Promise.all([
     db.ref('approved_offers').once('value'),
     db.ref('pending_offers').once('value')
@@ -762,7 +811,6 @@ function loadOffers() {
       allOffers = allOffers.concat(Object.values(approvedData));
     }
     
-    // For testing: show pending offers too if no approved offers
     if (pendingData && allOffers.length === 0) {
       allOffers = allOffers.concat(Object.values(pendingData));
     }
@@ -798,9 +846,11 @@ function loadOffers() {
             <strong>${offer.businessName || t('storeName')}</strong>
             ${offer.originalPrice ? `<span class="price-original">${offer.originalPrice} ${t('egp')}</span>` : ''}
             ${offer.discountedPrice ? `<span class="price-discounted">${offer.discountedPrice} ${t('egp')}</span>` : ''}
-            ${offer.status === 'pending' ? '<span style="color: orange; font-size: 12px;">⏳ قيد الانتظار</span>' : ''}
+            ${offer.discountPercentage ? `<span style="color: var(--primary-color); font-weight: 600;">${offer.discountPercentage}%</span>` : ''}
+            ${offer.status === 'pending' ? `<span style="color: orange; font-size: 12px;">⏳ ${t('pending')}</span>` : ''}
           </p>
           <p class="offer-category">${getCategoryName(offer.category)}</p>
+          ${offer.duration ? `<p class="offer-category">${offer.duration} ${getDurationTypeName(offer.durationType)}</p>` : ''}
         </div>
       </div>
     `).join('');
@@ -819,6 +869,8 @@ function showOfferDetails(offerId, status) {
       if (offer) {
         currentOffer = offer;
         
+        const durationText = offer.duration ? `${offer.duration} ${getDurationTypeName(offer.durationType)}` : '';
+        
         const detailsContent = `
           <h2>${offer.name}</h2>
           <p>${offer.description}</p>
@@ -827,29 +879,14 @@ function showOfferDetails(offerId, status) {
             <p><strong>${t('category')}:</strong> ${getCategoryName(offer.category)}</p>
             ${offer.originalPrice ? `<p><strong>${t('originalPrice')}:</strong> <span class="price-original">${offer.originalPrice} ${t('egp')}</span></p>` : ''}
             ${offer.discountedPrice ? `<p><strong>${t('discountedPrice')}:</strong> <span class="price-discounted">${offer.discountedPrice} ${t('egp')}</span></p>` : ''}
-            ${offer.duration ? `<p><strong>${t('offerDuration')}:</strong> ${offer.duration} ${t('days')}</p>` : ''}
-            ${offer.status === 'pending' ? '<p><strong>الحالة:</strong> <span style="color: orange;">⏳ قيد الانتظار</span></p>' : ''}
+            ${offer.discountPercentage ? `<p><strong>${t('discountPercentage')}:</strong> <span style="color: var(--primary-color); font-weight: 600;">${offer.discountPercentage}%</span></p>` : ''}
+            ${durationText ? `<p><strong>${t('offerDuration')}:</strong> ${durationText}</p>` : ''}
+            ${offer.status === 'pending' ? `<p><strong>${t('status')}:</strong> <span style="color: orange;">⏳ ${t('pending')}</span></p>` : ''}
           </div>
         `;
         
         document.getElementById('offerDetailsContent').innerHTML = detailsContent;
-        
-        const orderTitle = document.querySelector('#orderForm h3');
-        const customerName = document.getElementById('customerName');
-        const customerPhone = document.getElementById('customerPhone');
-        const customerEmail = document.getElementById('customerEmail');
-        const customerNotes = document.getElementById('customerNotes');
-        const addToCartBtn = document.querySelector('#orderForm .main-btn');
-        const orderNowBtn = document.querySelector('#orderForm .main-btn.secondary');
-        
-        if (orderTitle) orderTitle.textContent = t('orderTitle');
-        if (customerName) customerName.placeholder = t('yourName');
-        if (customerPhone) customerPhone.placeholder = t('yourPhone');
-        if (customerEmail) customerEmail.placeholder = t('yourEmail');
-        if (customerNotes) customerNotes.placeholder = t('additionalNotes');
-        if (addToCartBtn) addToCartBtn.textContent = t('addToCart');
-        if (orderNowBtn) orderNowBtn.textContent = t('orderNow');
-        
+        updateOfferDetails();
         navigateTo('offer-details');
       }
     })
@@ -865,6 +902,7 @@ function addToCart() {
   const customerName = document.getElementById('customerName').value;
   const customerPhone = document.getElementById('customerPhone').value;
   const customerEmail = document.getElementById('customerEmail').value;
+  const customerAddress = document.getElementById('customerAddress').value;
   const customerNotes = document.getElementById('customerNotes').value;
   
   if (!customerName || !customerPhone || !customerEmail) {
@@ -882,6 +920,7 @@ function addToCart() {
       name: customerName,
       phone: customerPhone,
       email: customerEmail,
+      address: customerAddress,
       notes: customerNotes
     },
     addedAt: new Date().toISOString()
@@ -1003,15 +1042,16 @@ document.getElementById('addOfferForm')?.addEventListener('submit', function(e) 
   const offerDesc = document.getElementById('offerDesc').value;
   const originalPrice = document.getElementById('originalPrice').value;
   const discountedPrice = document.getElementById('discountedPrice').value;
+  const discountPercentage = document.getElementById('discountPercentage').value;
   const offerCategory = document.getElementById('offerCategory').value;
   const offerDuration = document.getElementById('offerDuration').value;
+  const durationType = document.getElementById('durationType').value;
   
   if (!offerTitle || !offerDesc || !offerCategory) {
     alert(t('fillAllFields'));
     return;
   }
   
-  // Get business info from users table or use default
   db.ref('users/' + currentUser.uid).once('value')
     .then((snapshot) => {
       const businessData = snapshot.val();
@@ -1024,8 +1064,10 @@ document.getElementById('addOfferForm')?.addEventListener('submit', function(e) 
         description: offerDesc,
         originalPrice: originalPrice || null,
         discountedPrice: discountedPrice || null,
+        discountPercentage: discountPercentage || null,
         category: offerCategory,
         duration: offerDuration || null,
+        durationType: durationType || 'days',
         businessId: currentUser.uid,
         businessName: businessName,
         status: 'pending',
@@ -1042,204 +1084,6 @@ document.getElementById('addOfferForm')?.addEventListener('submit', function(e) 
     });
 });
 
-// ADMIN SYSTEM - SIMPLIFIED
-function checkAdminStatus(userId) {
-  // For testing: make first user admin automatically
-  if (currentUser && !localStorage.getItem('adminChecked')) {
-    localStorage.setItem('adminChecked', 'true');
-    
-    // Check if user should be admin (first user or specific email)
-    db.ref('users').once('value').then(snapshot => {
-      const users = snapshot.val();
-      const userCount = users ? Object.keys(users).length : 0;
-      
-      // Make first user or specific emails admin
-      if (userCount === 1 || currentUser.email.includes('admin') || currentUser.email.includes('test')) {
-        localStorage.setItem('isAdmin', 'true');
-        showAdminButton();
-      }
-    });
-  }
-  
-  // Check localStorage for admin status
-  if (localStorage.getItem('isAdmin') === 'true') {
-    showAdminButton();
-  }
-}
-
-function showAdminButton() {
-  let adminBtn = document.getElementById('adminPanelBtn');
-  if (!adminBtn) {
-    adminBtn = document.createElement('div');
-    adminBtn.id = 'adminPanelBtn';
-    adminBtn.innerHTML = '<button onclick="navigateTo(\'admin\')" class="admin-btn">⚙️ لوحة التحكم</button>';
-    document.body.appendChild(adminBtn);
-  }
-  adminBtn.style.display = 'block';
-}
-
-// Temporary admin function
-function makeMeAdmin() {
-  localStorage.setItem('isAdmin', 'true');
-  showAdminButton();
-  alert('✅ أنت الآن أدمن! إضغط على زر لوحة التحكم في الأعلى');
-}
-
-// Add temporary admin button
-setTimeout(() => {
-  if (!document.getElementById('tempAdminBtn')) {
-    const tempAdminBtn = document.createElement('button');
-    tempAdminBtn.id = 'tempAdminBtn';
-    tempAdminBtn.textContent = '🔧 أدمن مؤقت';
-    tempAdminBtn.style.position = 'fixed';
-    tempAdminBtn.style.bottom = '80px';
-    tempAdminBtn.style.right = '20px';
-    tempAdminBtn.style.zIndex = '10000';
-    tempAdminBtn.style.background = '#ff9800';
-    tempAdminBtn.style.color = 'white';
-    tempAdminBtn.style.border = 'none';
-    tempAdminBtn.style.padding = '10px';
-    tempAdminBtn.style.borderRadius = '20px';
-    tempAdminBtn.style.cursor = 'pointer';
-    tempAdminBtn.onclick = makeMeAdmin;
-    document.body.appendChild(tempAdminBtn);
-  }
-}, 2000);
-
-function loadAdminPanel() {
-  loadPendingOffers();
-}
-
-function openAdminTab(tabName) {
-  document.querySelectorAll('.admin-tab-content').forEach(tab => tab.style.display = 'none');
-  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-  document.getElementById(tabName + 'Offers').style.display = 'block';
-  event.target.classList.add('active');
-  
-  if (tabName === 'pending') loadPendingOffers();
-  else if (tabName === 'approved') loadApprovedOffers();
-  else if (tabName === 'rejected') loadRejectedOffers();
-}
-
-function loadPendingOffers() {
-  const container = document.getElementById('pendingOffers');
-  db.ref('pending_offers').once('value')
-    .then((snapshot) => {
-      const data = snapshot.val();
-      if (!data) {
-        container.innerHTML = '<p>' + t('noOffers') + '</p>';
-        return;
-      }
-      const offersArray = Object.values(data);
-      container.innerHTML = offersArray.map(offer => `
-        <div class="admin-offer-card">
-          <h3>${offer.name}</h3>
-          <p>${offer.description}</p>
-          <p><strong>${t('storeName')}:</strong> ${offer.businessName}</p>
-          <p><strong>${t('category')}:</strong> ${getCategoryName(offer.category)}</p>
-          ${offer.originalPrice ? `<p><strong>${t('originalPrice')}:</strong> ${offer.originalPrice} ${t('egp')}</p>` : ''}
-          ${offer.discountedPrice ? `<p><strong>${t('discountedPrice')}:</strong> ${offer.discountedPrice} ${t('egp')}</p>` : ''}
-          <span class="status-pending">${t('pending')}</span>
-          <div class="admin-offer-actions">
-            <button class="main-btn" onclick="approveOffer('${offer.id}')">${t('approve')}</button>
-            <button class="main-btn secondary" onclick="rejectOffer('${offer.id}')">${t('reject')}</button>
-          </div>
-        </div>
-      `).join('');
-    })
-    .catch((error) => {
-      container.innerHTML = '<p>' + t('errorLoadingData') + '</p>';
-    });
-}
-
-function loadApprovedOffers() {
-  const container = document.getElementById('approvedOffers');
-  db.ref('approved_offers').once('value')
-    .then((snapshot) => {
-      const data = snapshot.val();
-      if (!data) {
-        container.innerHTML = '<p>' + t('noOffers') + '</p>';
-        return;
-      }
-      const offersArray = Object.values(data);
-      container.innerHTML = offersArray.map(offer => `
-        <div class="admin-offer-card">
-          <h3>${offer.name}</h3>
-          <p>${offer.description}</p>
-          <p><strong>${t('storeName')}:</strong> ${offer.businessName}</p>
-          <span class="status-approved">${t('approved')}</span>
-        </div>
-      `).join('');
-    })
-    .catch((error) => {
-      container.innerHTML = '<p>' + t('errorLoadingData') + '</p>';
-    });
-}
-
-function loadRejectedOffers() {
-  const container = document.getElementById('rejectedOffers');
-  db.ref('rejected_offers').once('value')
-    .then((snapshot) => {
-      const data = snapshot.val();
-      if (!data) {
-        container.innerHTML = '<p>' + t('noOffers') + '</p>';
-        return;
-      }
-      const offersArray = Object.values(data);
-      container.innerHTML = offersArray.map(offer => `
-        <div class="admin-offer-card">
-          <h3>${offer.name}</h3>
-          <p>${offer.description}</p>
-          <p><strong>${t('storeName')}:</strong> ${offer.businessName}</p>
-          <span class="status-rejected">${t('rejected')}</span>
-        </div>
-      `).join('');
-    })
-    .catch((error) => {
-      container.innerHTML = '<p>' + t('errorLoadingData') + '</p>';
-    });
-}
-
-function approveOffer(offerId) {
-  db.ref('pending_offers/' + offerId).once('value')
-    .then((snapshot) => {
-      const offer = snapshot.val();
-      if (offer) {
-        return Promise.all([
-          db.ref('approved_offers/' + offerId).set(offer),
-          db.ref('pending_offers/' + offerId).remove()
-        ]);
-      }
-    })
-    .then(() => {
-      alert(t('offerApproved'));
-      loadPendingOffers();
-    })
-    .catch((error) => {
-      alert(t('errorAddingOffer'));
-    });
-}
-
-function rejectOffer(offerId) {
-  db.ref('pending_offers/' + offerId).once('value')
-    .then((snapshot) => {
-      const offer = snapshot.val();
-      if (offer) {
-        return Promise.all([
-          db.ref('rejected_offers/' + offerId).set(offer),
-          db.ref('pending_offers/' + offerId).remove()
-        ]);
-      }
-    })
-    .then(() => {
-      alert(t('offerRejected'));
-      loadPendingOffers();
-    })
-    .catch((error) => {
-      alert(t('errorAddingOffer'));
-    });
-}
-
 // Utility Functions
 function getCategoryName(category) {
   const categories = {
@@ -1253,6 +1097,15 @@ function getCategoryName(category) {
     'other': t('other')
   };
   return categories[category] || category;
+}
+
+function getDurationTypeName(durationType) {
+  const durationTypes = {
+    'days': t('days'),
+    'weeks': t('weeks'),
+    'months': t('months')
+  };
+  return durationTypes[durationType] || t('days');
 }
 
 function getAuthErrorMessage(error) {
@@ -1270,6 +1123,13 @@ function getAuthErrorMessage(error) {
 // Initialize language
 const savedLang = localStorage.getItem('lang') || 'ar';
 setLanguage(savedLang);
+
+// Add enter key support for search
+document.getElementById('searchInput')?.addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    searchOffers();
+  }
+});
 
 // Make functions globally available
 window.navigateTo = navigateTo;
@@ -1290,9 +1150,7 @@ window.orderNow = orderNow;
 window.updateQuantity = updateQuantity;
 window.removeFromCart = removeFromCart;
 window.checkout = checkout;
-window.openAdminTab = openAdminTab;
-window.approveOffer = approveOffer;
-window.rejectOffer = rejectOffer;
-window.makeMeAdmin = makeMeAdmin;
+window.contactBusiness = contactBusiness;
+window.searchOffers = searchOffers;
 
 console.log("🎯 Ofera App Initialized Successfully!");
