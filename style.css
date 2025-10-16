@@ -1,206 +1,679 @@
-/* style.css - Ofera Complete System */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
-
-:root{
-  --bg1:#e8fff2;
-  --bg2:#c8f9da;
-  --accent:#00b86b;
-  --accent-dark:#009a5c;
-  --muted:#6b8f78;
-  --card:#ffffff;
-  --error:#ff4757;
-  --warning:#ffa502;
-  --success:#2ed573;
+/* CSS Variables */
+:root {
+  --primary-color: #00b86b;
+  --primary-dark: #009957;
+  --secondary-color: #6c757d;
+  --background-color: #f8f9fa;
+  --surface-color: #ffffff;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --border-color: #dee2e6;
+  --error-color: #dc3545;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --border-radius: 12px;
+  --transition: all 0.3s ease;
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
-body{
-  font-family:'Poppins',sans-serif;
-  background:linear-gradient(180deg,var(--bg1),var(--bg2));
-  color:#05402a;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* pages */
-.page{ display:none; min-height:100vh; padding:24px; position:relative; }
-.page.active{ display:block; }
-
-/* language switch */
-.lang-switch{
-  position:fixed; top:12px; left:12px;
-  background:var(--accent); color:#fff; padding:8px 12px; border-radius:18px; cursor:pointer;
-  font-weight:700; box-shadow:0 6px 18px rgba(11,98,62,0.12); z-index:60;
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #e8fff2 0%, #f0f9ff 100%);
+  min-height: 100vh;
+  color: var(--text-primary);
+  line-height: 1.6;
 }
 
-/* central box */
-.center-box{
-  max-width:720px; margin:0 auto; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;
-  height:calc(100vh - 120px);
-  text-align:center;
+/* Language-specific font styles */
+[lang="ar"] {
+  font-family: 'Poppins', sans-serif;
 }
 
-/* welcome / brand */
-.welcome{ font-size:18px; color:var(--muted); font-weight:500; }
-.brand-row{ display:flex; align-items:center; gap:8px; }
-.brand{ font-size:44px; color:var(--accent-dark); font-weight:700; margin:0; }
-.subtitle{ color:var(--muted); margin-top:6px; display:flex; gap:8px; align-items:center; justify-content:center; }
-.subtitle .icon{ font-size:20px; }
-.subtitle .subtitle-text{ font-size:15px }
-
-/* main button */
-.main-btn{
-  width:100%; max-width:420px; padding:14px; border-radius:12px; border:none; color:#fff; background:linear-gradient(135deg,var(--accent),#13a55b);
-  font-weight:600; font-size:16px; cursor:pointer; box-shadow:0 8px 20px rgba(11,98,62,0.12); transition:transform .18s ease;
-  margin:5px 0;
-}
-.main-btn:hover{ transform:translateY(-3px); box-shadow:0 14px 28px rgba(11,98,62,0.14); }
-
-.main-btn.secondary{
-  background:linear-gradient(135deg,var(--muted),#8fa89a);
+[lang="en"] {
+  font-family: 'Poppins', sans-serif;
 }
 
-.main-btn.outline{
-  background:transparent; border:2px solid var(--accent); color:var(--accent);
+/* Pages */
+.page {
+  display: none;
+  min-height: 100vh;
+  padding: 20px;
+  padding-top: 80px;
 }
 
-/* back button */
-.back-btn{ position:absolute; top:16px; right:16px; background:transparent; border:none; color:var(--accent-dark); font-size:16px; cursor:pointer; font-weight:600; }
-
-/* auth boxes */
-.auth-box{ width:100%; max-width:400px; }
-.auth-options{ display:flex; flex-direction:column; gap:12px; width:100%; max-width:320px; }
-
-/* forms */
-.add-offer-form, .auth-box{ width:100%; max-width:520px; display:flex; flex-direction:column; gap:12px; }
-.field-label{ width:100%; text-align:right; font-weight:600; color:var(--muted); font-size:13px; margin-top:6px; }
-input[type="text"], input[type="email"], input[type="password"], input[type="tel"], input[type="number"], textarea, input[type="file"], select{ 
-  width:100%; padding:12px; border-radius:10px; border:1px solid #e1f7ea; background:#fbfffb; font-size:15px; outline:none; 
-  font-family:'Poppins', sans-serif;
-}
-textarea{ min-height:90px; resize:vertical; }
-select{ cursor:pointer; }
-
-/* error messages */
-.error-msg{ color:var(--error); font-size:14px; text-align:center; margin:10px 0; }
-
-/* toggle text */
-.toggle-text{ margin-top:8px; color:var(--muted); cursor:pointer; text-decoration:underline; }
-
-/* home signature */
-.home-sign{ position:fixed; bottom:8px; left:0; right:0; text-align:center; font-size:13px; color:rgba(5,64,42,0.75); font-weight:500; }
-
-/* offers list */
-.offers-box{ padding-top:10px; }
-.offers-container{ width:100%; max-width:720px; display:flex; flex-direction:column; gap:12px; margin-top:12px; }
-.offer-card{ 
-  display:flex; gap:12px; align-items:center; background:var(--card); padding:12px; border-radius:12px; 
-  box-shadow:0 6px 18px rgba(10,50,30,0.06); cursor:pointer; transition:transform 0.2s ease;
-}
-.offer-card:hover{ transform:translateY(-2px); box-shadow:0 8px 24px rgba(10,50,30,0.1); }
-.offer-card img{ width:120px; height:80px; object-fit:cover; border-radius:8px; }
-.thumb-placeholder{ width:120px; height:80px; display:flex; align-items:center; justify-content:center; background:#f2fff6; border-radius:8px; font-size:26px; }
-
-/* meta */
-.offer-meta{ flex:1; text-align:right; }
-.offer-meta h3{ margin:0; color:#04432a; font-size:18px; }
-.offer-meta p{ margin:4px 0 0 0; color:var(--muted); font-size:13px; }
-.offer-category{ color:var(--accent); font-weight:600; font-size:12px; margin-top:6px !important; }
-
-/* search and filters */
-.search-filters{ width:100%; max-width:720px; display:flex; gap:12px; margin-bottom:20px; }
-.search-input{ flex:2; }
-.category-filter{ flex:1; }
-
-/* details page */
-.details-content{ width:100%; max-width:720px; background:var(--card); padding:18px; border-radius:12px; box-shadow:0 6px 20px rgba(10,50,30,0.06); text-align:right; }
-.detail-img{ width:100%; border-radius:10px; margin-bottom:12px; max-height:300px; object-fit:cover; }
-
-/* order form */
-.order-form{ width:100%; max-width:720px; background:var(--card); padding:18px; border-radius:12px; box-shadow:0 6px 20px rgba(10,50,30,0.06); margin-top:20px; }
-.order-form h3{ margin-bottom:15px; color:var(--accent-dark); }
-.order-actions{ display:flex; gap:10px; margin-top:15px; }
-.order-actions .main-btn{ flex:1; }
-
-/* cart */
-.cart-float-btn{
-  position:fixed; bottom:20px; left:20px; background:var(--accent); color:white; 
-  width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center;
-  font-size:20px; cursor:pointer; box-shadow:0 4px 12px rgba(11,98,62,0.3); z-index:50;
-  transition:transform 0.3s ease;
-}
-.cart-float-btn:hover{ transform:scale(1.1); }
-#cartCount{ position:absolute; top:-5px; right:-5px; background:var(--error); color:white; 
-  border-radius:50%; width:20px; height:20px; font-size:12px; display:flex; align-items:center; justify-content:center; }
-
-.cart-items{ width:100%; max-width:720px; display:flex; flex-direction:column; gap:12px; }
-.cart-item{ display:flex; justify-content:space-between; align-items:center; background:var(--card); padding:12px; border-radius:12px; box-shadow:0 4px 12px rgba(10,50,30,0.06); }
-.cart-item-info{ flex:1; text-align:right; }
-.cart-item-actions{ display:flex; align-items:center; gap:10px; }
-.quantity-btn{ background:var(--accent); color:white; border:none; width:30px; height:30px; border-radius:50%; cursor:pointer; }
-.quantity-display{ margin:0 10px; font-weight:600; }
-
-.empty-state{ text-align:center; color:var(--muted); padding:40px 0; }
-.cart-summary{ width:100%; max-width:720px; background:var(--card); padding:18px; border-radius:12px; box-shadow:0 4px 12px rgba(10,50,30,0.06); margin-top:20px; }
-.summary-row{ display:flex; justify-content:space-between; margin-bottom:10px; font-weight:600; }
-
-/* admin panel */
-.admin-btn{
-  position:fixed; top:12px; right:12px; background:var(--warning); color:#fff; padding:8px 12px; border-radius:18px; 
-  cursor:pointer; font-weight:700; box-shadow:0 6px 18px rgba(255,165,2,0.2); z-index:60; border:none;
+.page.active {
+  display: block;
 }
 
-.admin-tabs{ display:flex; gap:10px; margin-bottom:20px; width:100%; max-width:720px; }
-.tab-btn{ flex:1; padding:10px; border:none; background:#f0f0f0; border-radius:8px; cursor:pointer; font-weight:600; }
-.tab-btn.active{ background:var(--accent); color:white; }
-
-.admin-tab-content{ width:100%; max-width:720px; }
-.admin-offer-card{ 
-  background:var(--card); padding:15px; border-radius:12px; box-shadow:0 4px 12px rgba(10,50,30,0.06); 
-  margin-bottom:12px; text-align:right;
-}
-.admin-offer-actions{ display:flex; gap:10px; margin-top:10px; }
-.admin-offer-actions .main-btn{ max-width:none; flex:1; padding:8px; font-size:14px; }
-
-/* status badges */
-.status-pending{ background:var(--warning); color:white; padding:4px 8px; border-radius:6px; font-size:12px; display:inline-block; }
-.status-approved{ background:var(--success); color:white; padding:4px 8px; border-radius:6px; font-size:12px; display:inline-block; }
-.status-rejected{ background:var(--error); color:white; padding:4px 8px; border-radius:6px; font-size:12px; display:inline-block; }
-
-/* price display */
-.price-original{ text-decoration:line-through; color:var(--muted); font-size:14px; margin-left:8px; }
-.price-discounted{ color:var(--accent); font-weight:700; font-size:18px; }
-
-/* home actions */
-.home-actions{ display:flex; flex-direction:column; gap:12px; width:100%; max-width:320px; }
-
-/* زر التثبيت PWA */
-.install-btn{
-  position:fixed; top:20px; right:20px; 
-  background:var(--accent); color:#fff; border:none; padding:10px 15px; 
-  border-radius:25px; cursor:pointer; font-size:14px; font-weight:500; 
-  box-shadow:0 4px 12px rgba(11,98,62,0.3); z-index:10000; 
-  transition:all 0.3s ease;
-}
-.install-btn:hover{
-  background:var(--accent-dark); transform:translateY(-2px); 
-  box-shadow:0 6px 16px rgba(11,98,62,0.4);
+/* Center Box */
+.center-box {
+  max-width: 450px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-/* إخفاء الزر عندما التطبيق مثبت */
-@media all and (display-mode: standalone) {
-  .install-btn{ display:none !important; }
+/* Brand Styles */
+.welcome {
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* responsive */
-@media (max-width:600px){
-  .brand{ font-size:34px; }
-  .main-btn{ font-size:15px; padding:12px; }
-  .offer-card img, .thumb-placeholder{ width:96px; height:68px; }
-  .install-btn{ top:10px; right:10px; padding:8px 12px; font-size:12px; }
-  .search-filters{ flex-direction:column; }
-  .order-actions{ flex-direction:column; }
-  .admin-tabs{ flex-direction:column; }
-  .cart-float-btn{ bottom:10px; left:10px; width:50px; height:50px; font-size:18px; }
+.brand-row {
+  margin-bottom: 20px;
+}
+
+.brand {
+  font-size: 2.8rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary-color), #00a2ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: 'Poppins', sans-serif;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.subtitle .icon {
+  margin-left: 8px;
+}
+
+/* Buttons */
+.main-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  width: 100%;
+  margin-bottom: 12px;
+  font-family: 'Poppins', sans-serif;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.main-btn.secondary {
+  background: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.main-btn.secondary:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.main-btn.outline {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 2px solid var(--border-color);
+}
+
+.main-btn.outline:hover {
+  background: var(--border-color);
+  color: var(--text-primary);
+}
+
+.back-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 12px 0;
+  margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.back-btn:hover {
+  color: var(--primary-color);
+}
+
+/* Auth Box */
+.auth-box {
+  text-align: center;
+}
+
+.page-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Forms */
+input, textarea, select {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  margin-bottom: 15px;
+  transition: var(--transition);
+  font-family: 'Poppins', sans-serif;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 184, 107, 0.1);
+}
+
+/* Search Container */
+.search-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.search-input {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.search-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: 'Poppins', sans-serif;
+  min-width: 80px;
+  white-space: nowrap;
+}
+
+.search-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+/* Price and Duration Rows */
+.price-row, .duration-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.price-column, .duration-column {
+  flex: 1;
+}
+
+.price-column label, .duration-column label {
+  display: block;
+  text-align: right;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+}
+
+/* Image Note */
+.image-note {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  margin-top: -10px;
+  margin-bottom: 15px;
+  text-align: right;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Auth Options */
+.auth-options, .home-actions {
+  margin-top: 30px;
+}
+
+/* Error Messages */
+.error-msg {
+  color: var(--error-color);
+  font-size: 0.9rem;
+  margin: 10px 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.toggle-text {
+  color: var(--text-secondary);
+  margin-top: 20px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+.toggle-text:hover {
+  color: var(--primary-color);
+}
+
+/* Language Switch */
+.lang-switch {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: var(--surface-color);
+  border: 2px solid var(--border-color);
+  border-radius: 25px;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 1000;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+.lang-switch:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+/* Install Button */
+.install-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 1000;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+.install-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+/* Cart Floating Button */
+.cart-float-btn {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: var(--shadow);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.cart-float-btn:hover {
+  background: var(--primary-dark);
+  transform: scale(1.1);
+}
+
+/* Offers Page */
+.offers-box {
+  max-width: 500px;
+}
+
+.search-filters {
+  margin-bottom: 30px;
+}
+
+.category-filter {
+  margin-bottom: 15px;
+}
+
+/* Offer Cards */
+.offers-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.offer-card {
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 2px solid transparent;
+  text-align: right;
+  font-family: 'Poppins', sans-serif;
+}
+
+.offer-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  border-color: var(--primary-color);
+}
+
+.thumb-placeholder {
+  width: 60px;
+  height: 60px;
+  background: var(--background-color);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.offer-meta h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
+}
+
+.offer-meta p {
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.offer-category {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-family: 'Poppins', sans-serif;
+}
+
+.price-original {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+  margin-left: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.price-discounted {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Offer Details */
+.details-content {
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  padding: 25px;
+  margin-bottom: 25px;
+  text-align: right;
+  font-family: 'Poppins', sans-serif;
+}
+
+.details-content h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
+}
+
+.details-content p {
+  margin-bottom: 10px;
+  color: var(--text-secondary);
+  font-family: 'Poppins', sans-serif;
+}
+
+.offer-details {
+  margin-top: 20px;
+}
+
+.offer-details p {
+  margin-bottom: 8px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Order Form */
+.order-form {
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  padding: 25px;
+  text-align: right;
+  font-family: 'Poppins', sans-serif;
+}
+
+.order-form h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
+}
+
+.order-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.order-actions .main-btn {
+  margin-bottom: 0;
+}
+
+/* Add Offer Form */
+.add-offer-form {
+  text-align: right;
+}
+
+.add-offer-form label {
+  display: block;
+  text-align: right;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+}
+
+/* Cart */
+.cart-items {
+  margin-bottom: 25px;
+}
+
+.cart-item {
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.cart-item-info h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
+}
+
+.cart-item-info p {
+  color: var(--text-secondary);
+  font-family: 'Poppins', sans-serif;
+}
+
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity-btn {
+  background: var(--background-color);
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: var(--transition);
+  font-family: 'Poppins', sans-serif;
+}
+
+.quantity-btn:hover {
+  background: var(--border-color);
+}
+
+.quantity-display {
+  font-weight: 600;
+  min-width: 30px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.empty-state p {
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.cart-summary {
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  padding: 25px;
+  text-align: right;
+  font-family: 'Poppins', sans-serif;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.summary-row span {
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Home Sign */
+.home-sign {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .page {
+    padding: 15px;
+    padding-top: 70px;
+  }
+  
+  .brand {
+    font-size: 2.5rem;
+  }
+  
+  .welcome {
+    font-size: 1.3rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .main-btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+    min-height: 48px;
+  }
+  
+  .lang-switch {
+    top: 15px;
+    left: 15px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+  
+  .install-btn {
+    top: 15px;
+    right: 15px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+  
+  .cart-float-btn {
+    bottom: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 1rem;
+  }
+  
+  .price-row, .duration-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .order-actions {
+    flex-direction: column;
+  }
+  
+  .search-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .search-btn {
+    width: 100%;
+  }
 }
