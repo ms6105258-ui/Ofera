@@ -25,22 +25,17 @@
 <body>
   <!-- Install Button -->
   <div id="installContainer" style="display: none;">
-    <button id="installBtn" class="install-btn">📲 تثبيت التطبيق</button>
-  </div>
-
-  <!-- Admin Panel Button -->
-  <div id="adminPanelBtn" style="display: none;">
-    <button onclick="navigateTo('admin')" class="admin-btn">⚙️ لوحة التحكم</button>
+    <button id="installBtn" class="install-btn">تثبيت التطبيق</button>
   </div>
 
   <!-- language switch -->
   <div class="lang-switch" id="langSwitch" onclick="toggleLanguage()">
-    <span id="lang-icon">🌐</span> <span id="lang-text">EN</span>
+    <span id="lang-text">EN</span>
   </div>
 
   <!-- CART FLOATING BUTTON -->
   <div id="cartFloatBtn" class="cart-float-btn" onclick="navigateTo('cart')" style="display: none;">
-    🛒 <span id="cartCount">0</span>
+    <span id="cartCount">0</span>
   </div>
 
   <!-- LOGIN REQUIRED -->
@@ -51,7 +46,6 @@
         <h2 class="brand">أوفيرا</h2>
       </div>
       <p class="subtitle">
-        <span class="icon">🛍️</span>
         <span class="subtitle-text">العروض الذكية بين إيديك</span>
       </p>
 
@@ -101,19 +95,18 @@
   <!-- HOME -->
   <section id="home" class="page">
     <div class="center-box">
-      <h1 class="welcome" data-ar="مرحبًا بك في" data-en="Welcome to">مرحبًا بك في</h1>
+      <h1 class="welcome">مرحبًا بك في</h1>
       <div class="brand-row">
-        <h2 class="brand" data-ar="أوفيرا" data-en="Ofera">أوفيرا</h2>
+        <h2 class="brand">أوفيرا</h2>
       </div>
-      <p class="subtitle" data-ar="العروض الذكية بين إيديك" data-en="Smart offers at your fingertips">
-        <span class="icon">🛍️</span>
+      <p class="subtitle">
         <span class="subtitle-text">العروض الذكية بين إيديك</span>
       </p>
 
       <div class="home-actions">
-        <button class="main-btn" onclick="navigateTo('offers')">🛍️ العروض</button>
-        <button class="main-btn secondary" onclick="navigateTo('business-options')">🏪 الدخول كبائع</button>
-        <button class="main-btn outline" onclick="logout()">🚪 تسجيل الخروج</button>
+        <button class="main-btn" onclick="navigateTo('offers')">العروض</button>
+        <button class="main-btn secondary" onclick="navigateTo('business-options')">الدخول كبائع</button>
+        <button class="main-btn outline" onclick="logout()">تسجيل الخروج</button>
       </div>
     </div>
 
@@ -127,8 +120,8 @@
     <div class="center-box">
       <h2 class="page-title">خيارات البائع</h2>
 
-      <button class="main-btn" onclick="navigateTo('business-login')">🔐 دخول البائع</button>
-      <button class="main-btn secondary" onclick="navigateTo('business-register')">📝 تسجيل بائع جديد</button>
+      <button class="main-btn" onclick="navigateTo('business-login')">دخول البائع</button>
+      <button class="main-btn secondary" onclick="navigateTo('business-register')">تسجيل بائع جديد</button>
     </div>
   </section>
 
@@ -176,7 +169,10 @@
 
       <!-- SEARCH AND FILTERS -->
       <div class="search-filters">
-        <input type="text" id="searchInput" placeholder="ابحث في العروض..." class="search-input" />
+        <div class="search-container">
+          <input type="text" id="searchInput" placeholder="ابحث في العروض..." class="search-input" />
+          <button class="search-btn" onclick="searchOffers()">بحث</button>
+        </div>
         <select id="categoryFilter" class="category-filter">
           <option value="all">جميع التصنيفات</option>
           <option value="restaurants">مطاعم</option>
@@ -212,10 +208,12 @@
           <input type="text" id="customerName" placeholder="اسمك الكامل" required />
           <input type="tel" id="customerPhone" placeholder="رقم هاتفك" required />
           <input type="email" id="customerEmail" placeholder="بريدك الإلكتروني" required />
+          <textarea id="customerAddress" placeholder="عنوانك (اختياري)"></textarea>
           <textarea id="customerNotes" placeholder="ملاحظات إضافية (اختياري)"></textarea>
           <div class="order-actions">
-            <button type="button" class="main-btn" onclick="addToCart()">إضافة إلى السلة</button>
-            <button type="button" class="main-btn secondary" onclick="orderNow()">طلب مباشر</button>
+            <button type="button" class="main-btn secondary" onclick="addToCart()">إضافة إلى السلة</button>
+            <button type="button" class="main-btn" onclick="orderNow()">طلب مباشر</button>
+            <button type="button" class="main-btn outline" onclick="contactBusiness()">الاتصال بالبائع</button>
           </div>
         </form>
       </div>
@@ -231,16 +229,24 @@
 
       <form id="addOfferForm" class="add-offer-form">
         <label>اسم العرض</label>
-        <input id="offerTitle" type="text" placeholder="عنوان العرض" required />
+        <input id="offerTitle" type="text" placeholder="أدخل اسم العرض" required />
 
         <label>وصف العرض</label>
-        <textarea id="offerDesc" placeholder="وصف مفصل للعرض" required></textarea>
+        <textarea id="offerDesc" placeholder="أدخل وصف مفصل للعرض" required></textarea>
 
-        <label>السعر الأصلي</label>
-        <input id="originalPrice" type="number" placeholder="السعر قبل الخصم" />
+        <div class="price-row">
+          <div class="price-column">
+            <label>السعر الأصلي</label>
+            <input id="originalPrice" type="number" placeholder="السعر الأصلي" />
+          </div>
+          <div class="price-column">
+            <label>السعر بعد الخصم</label>
+            <input id="discountedPrice" type="number" placeholder="السعر بعد الخصم" />
+          </div>
+        </div>
 
-        <label>السعر بعد الخصم</label>
-        <input id="discountedPrice" type="number" placeholder="السعر بعد الخصم" />
+        <label>نسبة الخصم (اختياري)</label>
+        <input id="discountPercentage" type="number" placeholder="نسبة الخصم %" min="0" max="100" />
 
         <label>تصنيف العرض</label>
         <select id="offerCategory" required>
@@ -255,11 +261,24 @@
           <option value="other">أخرى</option>
         </select>
 
-        <label>مدة العرض</label>
-        <input id="offerDuration" type="number" placeholder="عدد الأيام" />
+        <div class="duration-row">
+          <div class="duration-column">
+            <label>مدة العرض</label>
+            <input id="offerDuration" type="number" placeholder="المدة" />
+          </div>
+          <div class="duration-column">
+            <label>نوع المدة</label>
+            <select id="durationType">
+              <option value="days">أيام</option>
+              <option value="weeks">أسابيع</option>
+              <option value="months">شهور</option>
+            </select>
+          </div>
+        </div>
 
-        <label>صورة العرض (اختياري)</label>
+        <label>صورة العرض الرئيسية (اختياري)</label>
         <input id="offerImage" type="file" accept="image/*" />
+        <small class="image-note">سيتم عرض هذه الصورة بجوار العرض</small>
 
         <button type="submit" class="main-btn">إرسال العرض للموافقة</button>
       </form>
@@ -292,33 +311,6 @@
           <span id="totalPrice">0 جنيه</span>
         </div>
         <button class="main-btn" onclick="checkout()">إتمام الطلب</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ADMIN PANEL -->
-  <section id="admin" class="page">
-    <button class="back-btn" onclick="navigateTo('home')">الرئيسية</button>
-
-    <div class="center-box">
-      <h2 class="page-title">لوحة التحكم</h2>
-
-      <div class="admin-tabs">
-        <button class="tab-btn active" onclick="openAdminTab('pending')">العروض المعلقة</button>
-        <button class="tab-btn" onclick="openAdminTab('approved')">العروض المقبولة</button>
-        <button class="tab-btn" onclick="openAdminTab('rejected')">العروض المرفوضة</button>
-      </div>
-
-      <div id="pendingOffers" class="admin-tab-content">
-        <!-- JS fills pending offers -->
-      </div>
-
-      <div id="approvedOffers" class="admin-tab-content" style="display: none;">
-        <!-- JS fills approved offers -->
-      </div>
-
-      <div id="rejectedOffers" class="admin-tab-content" style="display: none;">
-        <!-- JS fills rejected offers -->
       </div>
     </div>
   </section>
