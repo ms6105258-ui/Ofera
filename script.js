@@ -784,7 +784,7 @@ function contactBusiness() {
   // For example: window.open(`tel:${currentOffer.businessPhone}`) or other contact methods
 }
 
-// Offers Management
+// Offers Management - Only show approved offers
 function loadOffers() {
   const offersContainer = document.getElementById("offersContainer");
   const searchInput = document.getElementById("searchInput");
@@ -797,73 +797,69 @@ function loadOffers() {
   const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
   const selectedCategory = categoryFilter ? categoryFilter.value : 'all';
   
-  Promise.all([
-    db.ref('approved_offers').once('value'),
-    db.ref('pending_offers').once('value')
-  ])
-  .then(([approvedSnapshot, pendingSnapshot]) => {
-    const approvedData = approvedSnapshot.val();
-    const pendingData = pendingSnapshot.val();
-    
-    let allOffers = [];
-    
-    if (approvedData) {
-      allOffers = allOffers.concat(Object.values(approvedData));
-    }
-    
-    if (pendingData && allOffers.length === 0) {
-      allOffers = allOffers.concat(Object.values(pendingData));
-    }
-    
-    if (allOffers.length === 0) {
-      offersContainer.innerHTML = `<p>${t('noOffers')}</p>`;
-      return;
-    }
-    
-    const filteredOffers = allOffers.filter(offer => {
-      const matchesSearch = !searchTerm || 
-        (offer.name && offer.name.toLowerCase().includes(searchTerm)) ||
-        (offer.description && offer.description.toLowerCase().includes(searchTerm)) ||
-        (offer.businessName && offer.businessName.toLowerCase().includes(searchTerm));
+  // ONLY check approved_offers - pending offers won't show
+  db.ref('approved_offers').once('value')
+    .then((approvedSnapshot) => {
+      const approvedData = approvedSnapshot.val();
       
-      const matchesCategory = selectedCategory === 'all' || offer.category === selectedCategory;
+      let allOffers = [];
       
-      return matchesSearch && matchesCategory;
-    });
-    
-    if (filteredOffers.length === 0) {
-      offersContainer.innerHTML = `<p>${t('noMatchingOffers')}</p>`;
-      return;
-    }
-    
-    offersContainer.innerHTML = filteredOffers.map(offer => `
-      <div class="offer-card" onclick="showOfferDetails('${offer.id}', '${offer.status || 'approved'}')">
-        <div class="thumb-placeholder">🛍️</div>
-        <div class="offer-meta">
-          <h3>${offer.name || t('offerName')}</h3>
-          <p>${offer.description || t('offerDescription')}</p>
-          <p class="offer-category">
-            <strong>${offer.businessName || t('storeName')}</strong>
-            ${offer.originalPrice ? `<span class="price-original">${offer.originalPrice} ${t('egp')}</span>` : ''}
-            ${offer.discountedPrice ? `<span class="price-discounted">${offer.discountedPrice} ${t('egp')}</span>` : ''}
-            ${offer.discountPercentage ? `<span style="color: var(--primary-color); font-weight: 600;">${offer.discountPercentage}%</span>` : ''}
-            ${offer.status === 'pending' ? `<span style="color: orange; font-size: 12px;">⏳ ${t('pending')}</span>` : ''}
-          </p>
-          <p class="offer-category">${getCategoryName(offer.category)}</p>
-          ${offer.duration ? `<p class="offer-category">${offer.duration} ${getDurationTypeName(offer.durationType)}</p>` : ''}
+      if (approvedData) {
+        allOffers = Object.values(approvedData);
+      }
+      
+      if (allOffers.length === 0) {
+        offersContainer.innerHTML = `<p>${t('noOffers')}</p>`;
+        return;
+      }
+      
+      const filteredOffers = allOffers.filter(offer => {
+        const matchesSearch = !searchTerm || 
+          (offer.name && offer.name.toLowerCase().includes(searchTerm)) ||
+          (offer.description && offer.description.toLowerCase().includes(searchTerm)) ||
+          (offer.businessName && offer.businessName.toLowerCase().includes(searchTerm));
+        
+        const matchesCategory = selectedCategory === 'all' || offer.category === selectedCategory;
+        
+        return matchesSearch && matchesCategory;
+      });
+      
+      if (filteredOffers.length === 0) {
+        offersContainer.innerHTML = `<p>${t('noMatchingOffers')}</p>`;
+        return;
+      }
+      
+      offersContainer.innerHTML = filteredOffers.map(offer => `
+        <div class="offer-card" onclick="showOfferDetails('${offer.id}', 'approved')">
+          <div class="thumb-placeholder">🛍️</div>
+          <div class="offer-meta">
+            <h3>${offer.name || t('offerName')}</h3>
+            <p>${offer.description || t('offerDescription')}</p>
+            <p class="offer-category">
+              <strong>${offer.businessName || t('storeName')}</strong>
+              ${offer.originalPrice ? `<span class="price-original">${offer.originalPrice} ${t('egp')}</span>` : ''}
+              ${offer.discountedPrice ? `<span class="price-discounted">${offer.discountedPrice} ${t('egp')}</span>` : ''}
+              ${offer.discountPercentage ? `<span style="color: var(--primary-color); font-weight: 600;">${offer.discountPercentage}%</span>` : ''}
+            </p>
+            <p class="offer-category">${getCategoryName(offer.category)}</p>
+            ${offer.duration ? `<p class="offer-category">${offer.duration} ${getDurationTypeName(offer.durationType)}</p>` : ''}
+          </div>
         </div>
-      </div>
-    `).join('');
-  })
-  .catch((error) => {
-    offersContainer.innerHTML = `<p>❌ ${t('errorLoadingData')}</p>`;
-  });
+      `).join('');
+    })
+    .catch((error) => {
+      offersContainer.innerHTML = `<p>❌ ${t('errorLoadingData')}</p>`;
+    });
 }
 
 function showOfferDetails(offerId, status) {
-  const ref = status === 'pending' ? 'pending_offers' : 'approved_offers';
+  // Only show approved offers to customers
+  if (status !== 'approved') {
+    alert('هذا العرض غير متاح حالياً');
+    return;
+  }
   
-  db.ref(ref + '/' + offerId).once('value')
+  db.ref('approved_offers/' + offerId).once('value')
     .then((snapshot) => {
       const offer = snapshot.val();
       if (offer) {
@@ -881,7 +877,6 @@ function showOfferDetails(offerId, status) {
             ${offer.discountedPrice ? `<p><strong>${t('discountedPrice')}:</strong> <span class="price-discounted">${offer.discountedPrice} ${t('egp')}</span></p>` : ''}
             ${offer.discountPercentage ? `<p><strong>${t('discountPercentage')}:</strong> <span style="color: var(--primary-color); font-weight: 600;">${offer.discountPercentage}%</span></p>` : ''}
             ${durationText ? `<p><strong>${t('offerDuration')}:</strong> ${durationText}</p>` : ''}
-            ${offer.status === 'pending' ? `<p><strong>${t('status')}:</strong> <span style="color: orange;">⏳ ${t('pending')}</span></p>` : ''}
           </div>
         `;
         
@@ -1120,9 +1115,31 @@ function getAuthErrorMessage(error) {
   return errorMessages[error.code] || t('unexpectedError');
 }
 
-// Initialize language
-const savedLang = localStorage.getItem('lang') || 'ar';
-setLanguage(savedLang);
+// Handle Android/iOS back button
+function handleBackButton() {
+  // Prevent default back behavior in PWA
+  if (window.history.length > 1) {
+    goBack();
+    return false;
+  }
+  return true;
+}
+
+// Add event listener for back button
+window.addEventListener('popstate', function(event) {
+  event.preventDefault();
+  handleBackButton();
+});
+
+// Override back button behavior
+history.pushState(null, null, document.URL);
+window.addEventListener('popstate', function () {
+  history.pushState(null, null, document.URL);
+  handleBackButton();
+});
+
+// Also handle hardware back button on mobile
+document.addEventListener('backbutton', handleBackButton, false);
 
 // Add enter key support for search
 document.getElementById('searchInput')?.addEventListener('keypress', function(e) {
@@ -1130,6 +1147,10 @@ document.getElementById('searchInput')?.addEventListener('keypress', function(e)
     searchOffers();
   }
 });
+
+// Initialize language
+const savedLang = localStorage.getItem('lang') || 'ar';
+setLanguage(savedLang);
 
 // Make functions globally available
 window.navigateTo = navigateTo;
